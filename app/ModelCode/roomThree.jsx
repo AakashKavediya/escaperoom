@@ -8,14 +8,14 @@ import * as THREE from "three";
 
 // Website screen component - placed separately but positioned relative to model
 function WebsiteScreen() {
-  const [scale, setScale] = useState(1);
+  const [scale, setScale] = useState(1.5);
   const [isZoomed, setIsZoomed] = useState(false);
 
   const handleScaleClick = () => {
     if (isZoomed) {
-      setScale(1);
+      setScale(1.5);
     } else {
-      setScale(2.5);
+      setScale(8);
     }
     setIsZoomed(!isZoomed);
   };
@@ -24,7 +24,7 @@ function WebsiteScreen() {
     <Html
       transform
       position={[0, 5, 14]} // Exact position to match the monitor in the model
-      rotation={[0, 273.39, 0.01]}
+      rotation={[0, 273.24, 0.01]}
       scale={scale}
       distanceFactor={1}
       occlude={false}
@@ -110,7 +110,7 @@ const LoadModel = ({ position = [0, 0, 0], rotation = [0, 0, 0] }) => {
 function CameraCoordinates({ position }) {
   return (
     <div className="absolute top-4 left-4 bg-black bg-opacity-70 text-white p-3 rounded-lg font-mono text-sm z-10">
-      <div>Camera Position:</div>
+      <div>Player Position:</div>
       <div>X: {position[0].toFixed(2)}</div>
       <div>Y: {position[1].toFixed(2)}</div>
       <div>Z: {position[2].toFixed(2)}</div>

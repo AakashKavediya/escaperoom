@@ -125,7 +125,7 @@ const LoadModel = ({ position = [0, 0, 0], rotation = [0, 0, 0] }) => {
 function CameraCoordinates({ position }) {
   return (
     <div className="absolute top-4 left-4 bg-black bg-opacity-70 text-white p-3 rounded-lg font-mono text-sm z-10">
-      <div>Camera Position:</div>
+      <div>Player Position:</div>
       <div>X: {position[0].toFixed(2)}</div>
       <div>Y: {position[1].toFixed(2)}</div>
       <div>Z: {position[2].toFixed(2)}</div>
