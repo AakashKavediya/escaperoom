@@ -82,7 +82,7 @@ function WebsiteScreen() {
         </button>
         
         <iframe
-          src="https://v0-windows-os-simulation.vercel.app/"
+          src="https://code-of-silence-unlocked-53719-03265.lovable.app/"
           style={{
             width: "1020px",
             height: "600px",
