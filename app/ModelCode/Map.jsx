@@ -28,7 +28,7 @@ const nodes = [
   { 
     id: "archive", 
     label: "Archive Room", 
-    href: "/archive", 
+    href: "/RoomFour", 
     color: "#9370DB", 
     x: 0, y: 180,
     description: "Sealed records - High priority",

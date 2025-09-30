@@ -23,7 +23,7 @@ function WebsiteScreen() {
   return (
     <Html
       transform
-      position={[0, 5, 14]} // Exact position to match the monitor in the model
+      position={[0, 4, 14]} // Exact position to match the monitor in the model
       rotation={[0, 273.24, 0.01]}
       scale={scale}
       distanceFactor={1}
@@ -83,6 +83,23 @@ function WebsiteScreen() {
   );
 }
 
+const LoadPaper = ({ position = [-2.5,2.8,-2],rotation=[0,0,0], scale = .05 }) => {
+  const PaperRef = useRef();
+  const { scene } = useGLTF("/model/pageTwo.glb");
+
+  if (!scene) return null;
+
+  return (
+    <primitive
+      ref={PaperRef}
+      object={scene}
+      position={position}
+      rotation={rotation}
+      scale={scale}
+    />
+  );
+}
+
 const LoadModel = ({ position = [0, 0, 0], rotation = [0, 0, 0] }) => {
   const ModelRef = useRef();
   const { scene } = useGLTF("/model/RoomThreeModel.glb")
@@ -138,7 +155,7 @@ const FirstPersonControls = ({ onPositionUpdate }) => {
       new THREE.Vector3(-2.79, 3.00, -3.25), // Point 3
       new THREE.Vector3(3.12, 3.00, -3.90)   // Point 4
     ],
-    y: 3.00 // Fixed Y position
+    y: 3.5 // Fixed Y position
   };
   
   // Camera state (first person position) - starting at [0, 3, 0]
@@ -410,7 +427,7 @@ const RoomThreeModel = () => {
         <Suspense fallback={null}>
           {/* Load the room model */}
           <LoadModel position={[0, 2, 0]} rotation={[0, 0, 0]} />
-          
+          <LoadPaper />
           {/* Website screen - positioned independently but in the same space */}
           <WebsiteScreen />
           

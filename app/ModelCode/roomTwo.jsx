@@ -98,6 +98,23 @@ function WebsiteScreen() {
   );
 }
 
+const LoadPaper = ({ position = [-0.9,1.8,4.5],rotation=[0,0,0], scale = .05 }) => {
+  const PaperRef = useRef();
+  const { scene } = useGLTF("/model/pageTwo.glb");
+
+  if (!scene) return null;
+
+  return (
+    <primitive
+      ref={PaperRef}
+      object={scene}
+      position={position}
+      rotation={rotation}
+      scale={scale}
+    />
+  );
+}
+
 const LoadModel = ({ position = [0, 0, 0], rotation = [0, 0, 0] }) => {
   const ModelRef = useRef();
   const { scene } = useGLTF("/model/RoomTwoModel.glb")
@@ -430,7 +447,7 @@ const RoomTwoModel = () => {
         <Suspense fallback={null}>
           {/* Load the room model */}
           <LoadModel position={[0, 2, 0]} rotation={[0, 0, 0]} />
-          
+          <LoadPaper />
           {/* Website screen - will appear after 11 seconds */}
           <WebsiteScreen />
           

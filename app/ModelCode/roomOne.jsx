@@ -98,6 +98,23 @@ function WebsiteScreen() {
   );
 }
 
+
+const LoadPaper = ({ position = [0.6, 2.4, 1.7],rotation=[0,0,0], scale = .02 }) => {
+  const PaperRef = useRef();
+  const { scene } = useGLTF("/model/pageOne.glb");
+
+  if (!scene) return null;
+
+  return (
+    <primitive
+      ref={PaperRef}
+      object={scene}
+      position={position}
+      rotation={rotation}
+      scale={scale}
+    />
+  );
+}
 const LoadModel = ({ position = [0, 2, 0], rotation = [0, 0, 0] }) => {
   const ModelRef = useRef();
   const { scene } = useGLTF("/model/RoomOneModel.glb")
@@ -161,8 +178,8 @@ const FirstPersonControls = ({ onPositionUpdate }) => {
   const [isMouseLooking, setIsMouseLooking] = useState(false);
   const previousMousePosition = useRef({ x: 0, y: 0 });
   
-  // Movement parameters
-  const moveSpeed = 0.04;
+  // Movement parameters (reduced by 30%)
+  const moveSpeed = 0.028;
   const damping = 0.8;
   const mouseSensitivity = 0.002;
 
@@ -408,7 +425,7 @@ const RoomModel = () => {
         <Suspense fallback={null}>
           {/* Load the room model */}
           <LoadModel position={[0, 2, 0]} rotation={[0, 0, 0]} />
-          
+          <LoadPaper />
           {/* Website screen - will appear after 11 seconds */}
           <WebsiteScreen />
           
