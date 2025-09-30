@@ -83,6 +83,25 @@ function WebsiteScreen() {
   );
 }
 
+const LoadPaper = ({ position = [0,4.78,6],rotation=[0,0,0], scale = .05 }) => {
+  const PaperRef = useRef();
+  const { scene } = useGLTF("/model/pageFour.glb");
+
+  if (!scene) return null;
+
+  return (
+    <primitive
+      ref={PaperRef}
+      object={scene}
+      position={position}
+      rotation={rotation}
+      scale={scale}
+    />
+  );
+}
+
+
+
 const LoadModel = ({ position = [0, 0, 0], rotation = [0, 0, 0] }) => {
   const ModelRef = useRef();
   const { scene } = useGLTF("/model/RoomFourModel.glb")
@@ -410,7 +429,7 @@ export default function RoomFourModel() {
         <Suspense fallback={null}>
           {/* Load the room model */}
           <LoadModel position={[0, 2, 0]} rotation={[0, 0, 0]} />
-          
+          <LoadPaper />
           {/* Website screen - positioned independently but in the same space */}
           <WebsiteScreen />
           
